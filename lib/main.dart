@@ -42,10 +42,19 @@ class Home extends StatelessWidget {
           child: Column(
             children: [
               const Text("PDF"),
-              const SizedBox(
-                height: 300,
-                width: double.infinity,
-                child: PDFViewer(),
+              BlocBuilder<ScanCodeBloc, ScanCodeState>(
+                builder: (context, state) {
+                  if (state.poduct == null) {
+                    return Container();
+                  }
+                  return SizedBox(
+                    height: 300,
+                    width: double.infinity,
+                    child: PDFViewer(
+                      id: state.poduct!.id.toString(),
+                    ),
+                  );
+                },
               ),
               ElevatedButton(
                   onPressed: () {

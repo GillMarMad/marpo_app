@@ -12,8 +12,8 @@ class ScanCodeBloc extends Bloc<ScanCodeEvent, ScanCodeState> {
   }
   final p = ProductAPI();
   void _onScan(ScanEvent event, Emitter<ScanCodeState> emit) async {
-    emit(const ScanCodeInitial(null, null));
     String code = await scan();
+    if (code == "-1") return;
     final product = await p.getProduct(code);
     emit(ScanCodeDoneState(product.description, product));
   }

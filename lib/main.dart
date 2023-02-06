@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marpo_app/pages/pdf.dart';
-
-import 'package:marpo_app/blocs/bloc.dart';
+import 'package:marpo_app/blocs/pdf_bloc/bloc/pdf_bloc_bloc.dart';
+import 'package:marpo_app/blocs/search_bloc/bloc/search_product_bloc.dart';
+import 'package:marpo_app/screens/screens.dart';
+import 'blocs/scan_bloc/scan_code_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,61 +20,30 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => ScanCodeBloc(),
           ),
+          BlocProvider(
+            create: (context) => SearchProductBloc(),
+          ),
+          BlocProvider(
+            create: (context) => PDFBloc(),
+          ),
         ],
         child: MaterialApp(
           title: 'Marpo App',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(primarySwatch: Colors.orange),
-          home: const Home(),
-        ));
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.orangeAccent,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Expanded(
-          child: Column(
-            children: [
-              const Text("PDF"),
-              BlocBuilder<ScanCodeBloc, ScanCodeState>(
-                builder: (context, state) {
-                  if (state.poduct == null) {
-                    return Container();
-                  }
-                  return SizedBox(
-                    height: 300,
-                    width: double.infinity,
-                    child: PDFViewer(
-                      id: state.poduct!.id.toString(),
-                    ),
-                  );
-                },
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    BlocProvider.of<ScanCodeBloc>(context, listen: false)
-                        .add(ScanEvent());
-                  },
-                  child: const Text("Scan")),
-              BlocBuilder<ScanCodeBloc, ScanCodeState>(
-                builder: (context, state) {
-                  return Container(
-                    color: Colors.amber,
-                    child: Text(state.code ?? ""),
-                  );
-                },
-              )
-            ],
+          initialRoute: 'home',
+          routes: {
+            'home': (context) => const SafeArea(child: HomeScreen()),
+            'details': (context) => const SafeArea(child: ProductDetails()),
+            'pdf': (context) => const SafeArea(child: PDFScreen()),
+          },
+          theme: ThemeData.dark().copyWith(
+            appBarTheme: const AppBarTheme(
+              color: Colors.greenAccent,
+              elevation: 10,
+              iconTheme: IconThemeData(color: Colors.black87),
+              titleTextStyle: TextStyle(color: Colors.black87, fontSize: 25),
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

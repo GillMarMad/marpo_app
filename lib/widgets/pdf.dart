@@ -2,28 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:internet_file/internet_file.dart';
 
+import '../api/product.dart';
+
 class PDFViewer extends StatefulWidget {
-  const PDFViewer({super.key, required this.id});
-  final String id;
+  const PDFViewer({super.key, required this.url});
+  final String url;
 
   @override
-  // ignore: no_logic_in_create_state
-  State<PDFViewer> createState() => _PDFViewerState(id);
+  State<PDFViewer> createState() => _PDFViewerState();
 }
 
 class _PDFViewerState extends State<PDFViewer> {
-  final String id;
   late PdfControllerPinch _pdfControllerPinch;
+  final pdf = PDFApi();
 
-  _PDFViewerState(this.id);
+  _PDFViewerState();
   @override
   void initState() {
     _pdfControllerPinch = PdfControllerPinch(
       // document: PdfDocument.openAsset('assets/hello.pdf'),
       document: PdfDocument.openData(
-        InternetFile.get(
-          'https://www.truper.com/ficha_tecnica/views/ficha-print.php?id=$id',
-        ),
+        InternetFile.get(widget.url),
       ),
       initialPage: 0,
     );

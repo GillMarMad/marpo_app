@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marpo_app/models/product.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 
 import '../api/product.dart';
-import '../blocs/pdf_bloc/bloc/pdf_bloc_bloc.dart';
-import '../blocs/search_bloc/bloc/search_product_bloc.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -87,7 +84,7 @@ class _Preview extends StatelessWidget {
               placeholder: const AssetImage('assets/no-image.jpg'),
               image: NetworkImage(product.fullMainImg),
               imageErrorBuilder: (context, error, stackTrace) {
-                return Image.asset("assets/images/no-image.jpg");
+                return Image.asset("assets/shopping-cart.png");
               },
               width: 150,
               fit: BoxFit.contain,
@@ -160,6 +157,7 @@ class _Details extends StatelessWidget {
               onPressed: () async {
                 final pdf = PDFApi();
                 var result = await pdf.getPDFUrl(product.code);
+                if (result == "") return;
                 result = result.replaceAll('"', '');
                 // ignore: use_build_context_synchronously
                 Navigator.pushNamed(context, 'pdf', arguments: result);

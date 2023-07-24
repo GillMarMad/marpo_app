@@ -42,12 +42,11 @@ class CardSwiper extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             child: FadeInImage(
                               placeholder:
-                                  const AssetImage('assets/no-image.jpg'),
+                                  const AssetImage('assets/shopping-cart.png'),
                               // image: const AssetImage('assets/no-image.jpg'),
                               image: NetworkImage(products[index].fullMainImg),
                               imageErrorBuilder: (context, error, stackTrace) {
-                                return Image.asset(
-                                    "assets/images/no-image.jpg");
+                                return Image.asset("assets/shopping-cart.png");
                               },
                               width: 190,
                               fit: BoxFit.cover,

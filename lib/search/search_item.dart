@@ -13,7 +13,7 @@ class SearchItem extends StatelessWidget {
         placeholder: const AssetImage('assets/no-image.jpg'),
         image: NetworkImage(urlImage),
         imageErrorBuilder: (context, error, stackTrace) {
-          return Image.asset("assets/images/no-image.jpg");
+          return Image.asset("assets/no-image.jpg");
         },
         width: 50,
         fit: BoxFit.contain,

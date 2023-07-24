@@ -44,7 +44,10 @@ class _PDFViewerState extends State<PDFViewer> {
             const Center(child: CircularProgressIndicator()),
         pageLoaderBuilder: (_) =>
             const Center(child: CircularProgressIndicator()),
-        errorBuilder: (_, error) => Center(child: Text(error.toString())),
+        errorBuilder: (_, error) => Center(
+            child: ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("Regresar al producto"))),
       ),
       controller: _pdfControllerPinch,
     );

@@ -48,11 +48,11 @@ class ProductModel {
   DateTime lastUpdate;
 
   get fullMainImg {
-    return "http://192.168.1.92:8000/api/image/$code";
+    return "http://192.168.1.86:8000/api/image/${code.replaceAll('/', '')}";
   }
 
   get fullBrandImg {
-    return "http://192.168.1.92:8000/api/image/brand/${brand.toLowerCase()}";
+    return "http://192.168.1.86:8000/api/image/brand/${brand.toLowerCase()}";
   }
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(

@@ -39,6 +39,7 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   flutter_bloc: ^8.1.1
   flutter_dotenv: ^5.0.2
+  get: ^4.6.5
   internet_file: ^1.2.0
   pdfx: ^2.3.0
 

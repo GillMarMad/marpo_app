@@ -29,13 +29,13 @@ class CardSwiper extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Container(
-                      color: Theme.of(context).backgroundColor,
+                      color: Theme.of(context).canvasColor,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
                             products[index].description,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.bodyMedium,
                             textAlign: TextAlign.center,
                           ),
                           ClipRRect(
@@ -54,12 +54,12 @@ class CardSwiper extends StatelessWidget {
                           ),
                           Text(
                             "\$${products[index].retailsale.toStringAsFixed(2)}",
-                            style: Theme.of(context).textTheme.subtitle1,
+                            style: Theme.of(context).textTheme.labelLarge,
                             textAlign: TextAlign.center,
                           ),
                           Text(
                             "\$${products[index].wholesale.toStringAsFixed(2)}",
-                            style: Theme.of(context).textTheme.caption,
+                            style: Theme.of(context).textTheme.bodySmall,
                             textAlign: TextAlign.center,
                           ),
                         ],

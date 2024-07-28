@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:marpo_app/models/product.dart';
 
 class ProductAPI {
-  final String _url = "http://192.168.1.86:8000/api";
+  final String _url = "http://192.168.1.85:8000/api";
 
   Future<ProductModel> getProduct(String code) async {
     final url = Uri.parse('$_url/getProduct?search=$code');
@@ -64,7 +64,7 @@ class ProductAPI {
 }
 
 class ProductsSearch {
-  final String _url = "http://192.168.1.86:8000/api";
+  final String _url = "http://192.168.1.85:8000/api";
 
   Future<List<ProductModel>> getProducts(String word) async {
     final url = Uri.parse('$_url/searchProduct?search=$word');
@@ -106,9 +106,9 @@ class ProductsSearch {
 }
 
 class PDFApi {
-  final String _url = "http://192.168.1.86:8000/api";
+  final String _url = "http://192.168.1.85:8000/api";
   Future<String> getPDFUrl(String code) async {
-    final url = Uri.parse("http://192.168.1.86:8000/api/getPDF?code=$code");
+    final url = Uri.parse("http://192.168.1.85:8000/api/getPDF?code=$code");
     final res = await http.get(
       url,
       headers: {'Content-Type': 'application/json'},

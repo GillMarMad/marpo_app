@@ -13,7 +13,7 @@ class PDFScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final String url = ModalRoute.of(context)!.settings.arguments as String;
     return Container(
-      color: Theme.of(context).backgroundColor,
+      color: Theme.of(context).canvasColor,
       child: PDFViewer(
         url: url,
       ),

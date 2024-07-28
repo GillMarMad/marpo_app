@@ -100,7 +100,7 @@ class _Preview extends StatelessWidget {
                   textAlign: TextAlign.center,
                   softWrap: true,
                   maxLines: 4,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -108,11 +108,11 @@ class _Preview extends StatelessWidget {
                   children: [
                     Text(
                       product.code,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Text(
                       product.key,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
                 ),
@@ -146,7 +146,7 @@ class _Details extends StatelessWidget {
           ),
           Text(
             "\$${product.wholesale.toStringAsFixed(2)}",
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           BarcodeWidget(
             barcode: Barcode.code128(),

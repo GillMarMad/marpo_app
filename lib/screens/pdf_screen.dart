@@ -1,10 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../blocs/pdf_bloc/bloc/pdf_bloc_bloc.dart';
-
-import '../widgets/pdf.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PDFScreen extends StatelessWidget {
   const PDFScreen({super.key});
@@ -14,9 +9,10 @@ class PDFScreen extends StatelessWidget {
     final String url = ModalRoute.of(context)!.settings.arguments as String;
     return Container(
       color: Theme.of(context).canvasColor,
-      child: PDFViewer(
-        url: url,
-      ),
+      child: SfPdfViewer.network(url),
+      // PDFViewer(
+      //   url: url,
+      // ),
     );
   }
 }

@@ -43,10 +43,8 @@ class HomeScreen extends StatelessWidget {
                 if (state.newProducts == null) {
                   return const Center(child: CircularProgressIndicator());
                 }
-                return Container(
-                  child: Column(
-                      children: [CardSwiper(products: state.newProducts!)]),
-                );
+                return Column(
+                    children: [CardSwiper(products: state.newProducts!)]);
               },
             )),
       ),

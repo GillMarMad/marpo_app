@@ -106,7 +106,7 @@ class ProductsSearch {
 }
 
 class PDFApi {
-  final String _url = "http://192.168.1.85:8000/api";
+  // final String _url = "http://192.168.1.85:8000/api";
   Future<String> getPDFUrl(String code) async {
     final url = Uri.parse("http://192.168.1.85:8000/api/getPDF?code=$code");
     final res = await http.get(

@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 Future<String> scan() async {
